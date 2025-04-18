@@ -1,7 +1,5 @@
 # post_audio/io.py
-"""
-Functions for loading WAV files, Excel metadata, and notes.txt.
-"""
+"""Functions for loading WAV files, Excel metadata, and notes.txt."""
 
 from pathlib import Path
 import pandas as pd

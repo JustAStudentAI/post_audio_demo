@@ -9,7 +9,7 @@ import pandas as pd
 
 # Hard‑coded loading of one clip
 rate, data = wav.read("data/sound1.wav")
-print(f"Loaded clip1.wav @ {rate} Hz → shape {data.shape}")
+print(f"Loaded clip1.wav @ {rate} Hz → shape {data.shape}")
 
 # Dump metadata from Excel sheet
 df = pd.read_excel("data/clip_metadata.xlsx")
