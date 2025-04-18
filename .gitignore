@@ -57,3 +57,8 @@ features.csv
 # OS files
 .DS_Store
 Thumbs.db
+
+# Ignore all files in data/ but keep the folder structure
+data/*
+!data/.gitkeep
+
