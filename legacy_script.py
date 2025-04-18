@@ -1,4 +1,9 @@
 # legacy_script.py
+'''
+Quick script that loads a single .wav file, and 
+prints contents of the .xlsx metadata and .txt notes.
+'''
+
 import scipy.io.wavfile as wav
 import pandas as pd
 
