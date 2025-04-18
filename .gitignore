@@ -1,17 +1,59 @@
-# Ignore virtual environment
-e/
-
-# Byte-compiled / cache files
+# Byte‑compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-*.pyo
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Distribution / packaging
+.Python
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+coverage.xml
+*,cover
+.hypothesis/
+.pytest_cache/
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
-# VSCode settings
-.vscode/
+# Spectrogram outputs and derived files
+spectrograms/
+features.csv
 
-# OS system files
+# IDE / editor folders
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
 .DS_Store
 Thumbs.db
