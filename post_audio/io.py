@@ -1,7 +1,7 @@
 # post_audio/io.py
-'''
+"""
 Functions for loading WAV files, Excel metadata, and notes.txt.
-'''
+"""
 
 from pathlib import Path
 import pandas as pd
@@ -16,10 +16,10 @@ def load_xlsx_metadata(path : Path):
     return pd.read_excel(path)
 
 def load_txt_notes(path : Path):
-    '''
+    """
     Will expect .txt file in format of:
     filename: content
-    '''
+    """
     notes = {}
     with open(path, 'r') as file:
         for line in file:
