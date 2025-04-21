@@ -13,8 +13,8 @@ def show_spectrogram(y: np.ndarray, sr: int) -> plt.Figure:
     """
     HOP_LENGTH = 512
 
-    # 1) Compute STFT (1024 samples, 50% overlap)
-    S = librosa.stft(y, n_fft=1024, hop_length=HOP_LENGTH, window='hann')
+    # 1) Compute STFT
+    S = librosa.stft(y, n_fft=2048, hop_length=HOP_LENGTH, window='hann')
     # 2) Convert to dB
     S_db = librosa.amplitude_to_db(np.abs(S), ref=np.max)
 
