@@ -1,44 +1,41 @@
 # post_audio/plots.py
-"""Visualization helpers: generate and display spectrograms using a 1024-point STFT."""
+"""Helper function to compute and return spectrogram Figures."""
 
 import numpy as np
 import matplotlib.pyplot as plt
-import librosa            
+import librosa
 import librosa.display
 
-def show_spectrogram(y: np.ndarray, sr: int):
+def show_spectrogram(y: np.ndarray, sr: int) -> plt.Figure:
     """
-    Compute and display a log-scaled spectrogram for the given audio.
-    
-    Args:
-        y: 1D audio time series.
-        sr: Sample rate of `y`.
+    Compute and return a log-scaled spectrogram Figure for the given audio.
+    (No plt.show(), so it works in Streamlit.)
     """
     HOP_LENGTH = 512
 
-    # 1) Compute STFT: 1024-sample window → freq resolution ≈ sr/1024; 50% overlap
+    # 1) Compute STFT (1024 samples, 50% overlap)
     S = librosa.stft(y, n_fft=1024, hop_length=HOP_LENGTH, window='hann')
-
-    # 2) Convert amplitude to dB scale (logarithmic)
+    # 2) Convert to dB
     S_db = librosa.amplitude_to_db(np.abs(S), ref=np.max)
 
-    # 3) Create a new figure
-    plt.figure(figsize=(6, 3))
+    # 3) Create Figure + Axes
+    fig, ax = plt.subplots(figsize=(6, 3))
 
-    # 4) Draw spectrogram: time on x-axis, log-scaled frequency on y-axis
-    librosa.display.specshow(
+    # 4) Draw spectrogram and capture the mappable
+    mesh = librosa.display.specshow(
         S_db,
         sr=sr,
         hop_length=HOP_LENGTH,
         y_axis='log',
-        x_axis='time'
+        x_axis='time',
+        ax=ax
     )
 
-    # 5) Add dB colorbar and title
-    plt.colorbar(format='%+2.0f dB')
-    plt.title("Spectrogram")
+    # 5) Add colorbar
+    fig.colorbar(mesh, ax=ax, format='%+2.0f dB')
 
-    # 6) Make layout tight and then pop up the window
+    # 6) Title & layout
+    ax.set_title("Spectrogram")
     plt.tight_layout()
-    plt.show()  
-    plt.close() 
+
+    return fig

@@ -27,7 +27,7 @@ def fft_peaks(signal : np.ndarray, sample_rate : int, top_n : int = 3):
     mags = np.abs(rfft(windowed))
 
     # 4) Compute frequencies corresponding to each FFT bin
-    freqs = rfftfreq(len(windowed), d=1/sr)
+    freqs = rfftfreq(len(windowed), d=1/sample_rate)
 
     # 5) Find indices of the top N magnitudes (sorted descending)
     idx = np.argsort(mags)[-top_n:][::-1]
