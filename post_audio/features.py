@@ -8,12 +8,12 @@ import numpy as np
 from scipy.fft import rfft, rfftfreq
 
 
-def fft_peaks(signal : np.ndarray, sample_rate : int, top_n : int = 3):
+def fft_peaks(signal : np.ndarray, sr : int, top_n : int = 3):
     """
     Compute the top N frequency peaks in the first 2048 samples.
 
     signal: the actual audio data (a NumPy array of float values).
-    sample_rate: the sample rate (e.g., 16,000 samples per second).
+    sr: the sample rate (e.g., 16,000 samples per second).
     top_n: the number of strongest frequency peaks you want to return (defaults to 3 if not provided).
     """
 
@@ -27,7 +27,7 @@ def fft_peaks(signal : np.ndarray, sample_rate : int, top_n : int = 3):
     mags = np.abs(rfft(windowed))
 
     # 4) Compute frequencies corresponding to each FFT bin
-    freqs = rfftfreq(len(windowed), d=1/sample_rate)
+    freqs = rfftfreq(len(windowed), d=1/sr)
 
     # 5) Find indices of the top N magnitudes (sorted descending)
     idx = np.argsort(mags)[-top_n:][::-1]
