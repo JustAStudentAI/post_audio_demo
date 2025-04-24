@@ -1,5 +1,5 @@
 # tests/test_peaks.py
-"""Unit test for fft peaks."""
+"""Unit test for fft peaks. Ran with pytest."""
 
 import numpy as np
 from post_audio.features import fft_peaks
@@ -22,7 +22,7 @@ def test_fft_peaks_detects_220hz():
     sine = generate_sine(220, sr)
     peaks = fft_peaks(sine, sr, 1)
     detected_freq, _ = peaks[0]
-    # Expect within ±5 Hz of 200
+    # Expect within ±5 Hz of 220
     assert abs(detected_freq - 220) < 5
 
 def test_fft_peaks_on_silence():
